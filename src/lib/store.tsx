@@ -44,9 +44,18 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     } catch(e) { console.warn(e) }
 
     // seed conversation
-    const seed = { id: uId(), title: 'Bienvenue', folderId: null, messages: [{ id: uId(), role: 'assistant', text: 'Bienvenue ! Pose ta première question.', createdAt: now() }], createdAt: now(), updatedAt: now() }
-    setConversations([seed])
-    setActiveConversationId(seed.id)
+        const seed: Conversation = {
+          id: uId(),
+          title: 'Bienvenue',
+          folderId: null,
+          messages: [
+            { id: uId(), role: 'assistant', text: 'Bienvenue ! Pose ta première question.', createdAt: now() }
+          ],
+          createdAt: now(),
+          updatedAt: now()
+        }
+        setConversations([seed])
+        setActiveConversationId(seed.id)
   }, [])
 
   useEffect(() => {
