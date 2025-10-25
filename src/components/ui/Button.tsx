@@ -14,3 +14,5 @@ export default function Button({ children, variant='primary', icon, className, .
   }
   return <button className={clsx(base, map[variant], className)} {...props}>{icon && <span className="w-4 h-4">{icon}</span>}<span className="font-medium">{children}</span></button>
 }
+
+//test
