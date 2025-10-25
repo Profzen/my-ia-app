@@ -1,0 +1,32 @@
+/* src/styles/tokens.css */
+:root{
+  --color-bg: #F8F9FB;
+  --color-surface: #FFFFFF;
+  --color-primary: #007AFF;
+  --color-accent: #0A84FF;
+  --color-secondary: #2C2C2E;
+  --color-text: #111111;
+  --color-text-muted: #6E6E73;
+  --color-success: #34C759;
+  --color-danger: #FF3B30;
+
+  --radius-md: 8px;
+  --shadow-sm: 0 8px 30px rgba(16,24,40,0.06);
+  --glass-bg: rgba(255,255,255,0.6);
+  --glass-blur: 8px;
+  --max-width: 1180px;
+  --transition-fast: 200ms;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"]{
+  --color-bg: #0B0C0D;
+  --color-surface: #0F1113;
+  --color-primary: #0A84FF;
+  --color-accent: #0A84FF;
+  --color-secondary: #DADADA;
+  --color-text: #FFFFFF;
+  --color-text-muted: #BDBDBD;
+  --glass-bg: rgba(20,20,22,0.45);
+  --shadow-sm: 0 8px 30px rgba(0,0,0,0.6);
+}

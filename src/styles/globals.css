@@ -1,0 +1,157 @@
+/* src/styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base */
+html, body, #__next { height: 100%; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App shell */
+.app-shell { display:flex; min-height:100vh; }
+
+/* Sidebar */
+.sidebar {
+  width: 320px;
+  min-width: 260px;
+  padding: 20px;
+  background: linear-gradient(180deg, var(--glass-bg), var(--glass-bg));
+  backdrop-filter: blur(var(--glass-blur));
+  border-right: 1px solid rgba(16,24,40,0.06);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Content area */
+.content { flex:1; display:flex; flex-direction:column; }
+
+/* Header */
+.header { padding: 20px; border-bottom: 1px solid rgba(16,24,40,0.04); background: transparent; }
+
+/* Chat layout */
+.chat-shell { display:flex; gap: 24px; padding: 24px; width:100%; }
+.chat-area { flex:1; display:flex; flex-direction:column; height: calc(100vh - 160px); background: transparent; border-radius: 12px; overflow: hidden; }
+
+/* Message list */
+.message-list { flex:1; overflow:auto; padding: 28px 20px; display:flex; justify-content:center; }
+.message-list-inner { width:100%; max-width: var(--max-width); }
+
+/* Composer sticky */
+.composer-wrap { border-top: 1px solid rgba(16,24,40,0.04); padding: 18px 24px; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.02)); }
+
+/* Cards */
+.card { background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid rgba(16,24,40,0.03); }
+
+/* Message visuals (fallback) */
+.msg-user { background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); color: white; }
+.msg-assistant { background: var(--color-surface); color: var(--color-text); }
+
+/* Utilities */
+.text-muted { color: var(--color-text-muted); }
+.container-max { max-width: var(--max-width); margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+
+/* Glow subtle for user bubble */
+.user-glow { box-shadow: 0 8px 30px rgba(0,122,255,0.12); }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .sidebar { display:none; }
+  .chat-shell { padding: 12px; }
+}
+/* Ajouts spécifiques sidebar (coller en bas de src/styles/globals.css) */
+
+.sidebar {
+  /* box shadow and subtle glass / depth already applied via tokens; ensure contrast */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Highlighted active item box shadow (fallback si Tailwind custom classes manquent) */
+.user-glow {
+  box-shadow: 0 10px 30px rgba(0,122,255,0.12);
+}
+
+/* Make sure inputs look crisp inside sidebar */
+.sidebar input {
+  outline: none;
+}
+
+/* Small screens: make the sidebar fill top (optional) */
+@media (max-width: 640px) {
+  .sidebar { position: relative; z-index: 40; }
+}
+/* **** SIDEBAR & SHELL POLISH (coller en bas de src/styles/globals.css) **** */
+
+/* Make the app shell fixed height and avoid full-page vertical scroll;
+   content areas will scroll internally (chat area handles its own scroll). */
+.app-shell {
+  height: 100vh;
+  overflow: hidden; /* <-- prevent page scroll */
+  display: flex;
+}
+
+/* Sidebar styling overrides (ensure solidity / contrast) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Make inputs and buttons crisp and rounded inside sidebar */
+.sidebar input {
+  border-radius: 12px;
+  box-shadow: none;
+  border: 1px solid rgba(16,24,40,0.04);
+}
+
+/* Buttons inside sidebar consistent */
+.sidebar button {
+  border-radius: 12px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.sidebar button:hover { transform: translateY(-1px); }
+
+/* Make lists scrollable but not the whole page */
+.sidebar .flex-1.overflow-auto {
+  max-height: calc(100vh - 300px); /* leaves space for top CTA and footer */
+  padding-right: 6px;
+}
+
+/* Ensure conversation items have comfortable tap targets */
+.sidebar .p-3 { padding: 12px; }
+
+/* Footer action spacing */
+.sidebar > .mt-auto { margin-top: 12px; }
+
+/* Visual focus */
+[role="button"]:focus { outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 12%, transparent); }
+
+/* Elevated CTA style */
+.sidebar .bg-\[var\(--color-primary\)\] {
+  box-shadow: 0 8px 30px rgba(0,122,255,0.12);
+}
+
+/* make sure chat area scrolls internally - set container to not scroll page */
+.content { overflow: hidden; display:flex; flex-direction:column; }
+
+/* Message list should handle scroll (internal only) */
+.message-list { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+/* Tweak for mobile: sidebar hidden but accessible via existing logic */
+@media (max-width: 960px) {
+  .sidebar { display:none; }
+  .app-shell { overflow: auto; }
+}
