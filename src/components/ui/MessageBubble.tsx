@@ -3,25 +3,32 @@
 import React from 'react'
 import clsx from 'clsx'
 import { Message } from '@/lib/store'
-import { Copy } from 'lucide-react'
 
 export default function MessageBubble({ msg }: { msg: Message }) {
   const isUser = msg.role === 'user'
-  return (
-    <div className={clsx('flex gap-4 mb-4 items-end', isUser ? 'justify-end' : 'justify-start')}>
-      {!isUser && <div className="w-10 h-10 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] font-semibold">AI</div>}
 
-      <div className={clsx('max-w-[80%] p-4 rounded-2xl', isUser ? 'msg-user user-glow' : 'msg-assistant card')}>
-        <div className="text-sm leading-7 whitespace-pre-wrap">{msg.text}</div>
-        <div className="mt-2 flex items-center justify-between text-xs text-[var(--color-text-muted)]">
-          <span>{new Date(msg.createdAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span>
-          <button aria-label="Copier" onClick={() => navigator.clipboard?.writeText(msg.text)} className="p-1 rounded hover:bg-[var(--color-bg)]">
-            <Copy size={14} />
-          </button>
-        </div>
+  return (
+    <div style={{display:'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', marginBottom:14}}>
+      {!isUser && (
+        <div style={{width:36,height:36,borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',marginRight:10,background:'rgba(0,163,255,0.08)', color:'var(--color-primary)'}}>AI</div>
+      )}
+
+      <div style={{
+        maxWidth:'78%',
+        padding:'14px 16px',
+        borderRadius:14,
+        background: isUser ? 'linear-gradient(90deg,var(--color-accent),var(--color-primary))' : 'var(--color-surface)',
+        color: isUser ? '#fff' : 'var(--color-text)',
+        boxShadow: isUser ? '0 8px 30px rgba(0,122,255,0.12)' : 'var(--shadow-sm)',
+        whiteSpace:'pre-wrap',
+        lineHeight:1.5
+      }}>
+        <div style={{fontSize:15}}>{msg.text}</div>
       </div>
 
-      {isUser && <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] flex items-center justify-center text-white font-semibold">U</div>}
+      {isUser && (
+        <div style={{width:36,height:36,borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',marginLeft:10,background:'var(--color-primary)', color:'#fff'}}>U</div>
+      )}
     </div>
   )
 }

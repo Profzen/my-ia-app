@@ -1,32 +1,40 @@
-/* src/styles/tokens.css */
+/* src/styles/tokens.css
+   Design tokens - palette bleu clair / blanc
+*/
 :root{
-  --color-bg: #F8F9FB;
+  --color-bg: #F3F8FF; /* très léger bleu */
   --color-surface: #FFFFFF;
-  --color-primary: #007AFF;
-  --color-accent: #0A84FF;
+  --color-primary: #00A3FF; /* bleu vif */
+  --color-primary-600: #007ACC;
+  --color-accent: #58B6FF;
   --color-secondary: #2C2C2E;
-  --color-text: #111111;
-  --color-text-muted: #6E6E73;
+  --color-text: #0B1220;
+  --color-text-muted: #6E7580;
   --color-success: #34C759;
-  --color-danger: #FF3B30;
+  --color-danger: #FF4D4F;
 
-  --radius-md: 8px;
-  --shadow-sm: 0 8px 30px rgba(16,24,40,0.06);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 6px 20px rgba(16,24,40,0.06);
+  --shadow-md: 0 12px 40px rgba(16,24,40,0.08);
+
   --glass-bg: rgba(255,255,255,0.6);
-  --glass-blur: 8px;
+  --transition-fast: 180ms;
   --max-width: 1180px;
-  --transition-fast: 200ms;
 }
 
-/* Dark theme overrides */
+/* dark overrides */
 [data-theme="dark"]{
-  --color-bg: #0B0C0D;
-  --color-surface: #0F1113;
+  --color-bg: #06070a;
+  --color-surface: #0e1113;
   --color-primary: #0A84FF;
-  --color-accent: #0A84FF;
-  --color-secondary: #DADADA;
-  --color-text: #FFFFFF;
-  --color-text-muted: #BDBDBD;
-  --glass-bg: rgba(20,20,22,0.45);
+  --color-primary-600: #0766C0;
+  --color-accent: #2B9BFF;
+  --color-text: #E6EEF7;
+  --color-text-muted: #AAB3BD;
+  --glass-bg: rgba(16,18,20,0.48);
   --shadow-sm: 0 8px 30px rgba(0,0,0,0.6);
+  --shadow-md: 0 20px 60px rgba(0,0,0,0.6);
 }

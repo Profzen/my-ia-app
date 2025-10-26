@@ -6,11 +6,13 @@ import Composer from './Composer'
 
 export default function ChatArea() {
   return (
-    <section className="chat-area">
-      <ChatWindow />
-      <div className="composer-wrap">
-        <Composer />
-      </div>
-    </section>
+    <>
+      <section className="chat-area card">
+        <ChatWindow />
+        <div className="composer-wrap">
+          <Composer />
+        </div>
+      </section>
+    </>
   )
 }

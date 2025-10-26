@@ -10,8 +10,8 @@ export default function ThemeToggle(){
   if(!mounted) return null
   const current = theme === 'system' ? systemTheme : theme
   return (
-    <button onClick={()=> setTheme(current === 'dark' ? 'light' : 'dark')} className="px-3 py-1 rounded-md border">
-      {current === 'dark' ? '🌙' : '☀️'}
+    <button onClick={()=> setTheme(current === 'dark' ? 'light' : 'dark')} style={{padding:'8px 10px', borderRadius:10, border:'1px solid rgba(16,24,40,0.04)'}}>
+      {current === 'dark' ? '☀️ Clair' : '🌙 Sombre'}
     </button>
   )
 }
